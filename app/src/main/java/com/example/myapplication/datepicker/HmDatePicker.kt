@@ -12,7 +12,7 @@ import com.example.myapplication.datepicker.models.CalendarConfig
 import com.example.myapplication.datepicker.models.CalendarSelection
 import com.example.myapplication.datepicker.models.CalendarStyle
 import com.example.myapplication.datepicker.views.CalendarBottomSheet
-import com.example.myapplication.ui.theme.Hmm_mancharoTheme
+import com.example.myapplication.ui.theme.HmmTheme
 import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +46,7 @@ fun HmDatePicker(
 @ThemePreviews
 @Composable
 fun HmDatePickerPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         val scaffoldState = rememberBottomSheetScaffoldState(
             SheetState(true, SheetValue.Expanded, { true }, false)
         )

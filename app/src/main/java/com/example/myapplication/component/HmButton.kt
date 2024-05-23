@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.BlackGray
 import com.example.myapplication.ui.theme.DarkBlue
-import com.example.myapplication.ui.theme.Hmm_mancharoTheme
+import com.example.myapplication.ui.theme.HmmTheme
 import com.example.myapplication.ui.theme.KTCTheme
 import com.example.myapplication.ui.theme.Sky
 import com.example.myapplication.ui.theme.White
@@ -314,7 +314,7 @@ fun HmSearchButton(
 fun HmFullButtonPreview(
     @PreviewParameter(BooleanProvider::class) isActive: Boolean
 ) {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmFullButton(
             onClick = {},
             isActive = isActive,
@@ -325,7 +325,7 @@ fun HmFullButtonPreview(
 @Preview
 @Composable
 fun HmSplitFullButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmSplitFullButton(
             onLeftClick = {},
             onRightClick = {},
@@ -338,7 +338,7 @@ fun HmSplitFullButtonPreview() {
 fun HmRoundButtonPreview(
     @PreviewParameter(BooleanProvider::class) isActive: Boolean
 ) {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmRoundButton(
             onClick = {},
             isActive = isActive,
@@ -350,7 +350,7 @@ fun HmRoundButtonPreview(
 @Preview
 @Composable
 fun HmWeightedRoundSplitButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmWeightedRoundSplitButton(
             onLeftClick = {},
             onRightClick = {},
@@ -362,7 +362,7 @@ fun HmWeightedRoundSplitButtonPreview() {
 @Preview
 @Composable
 fun HmVerticalRoundSplitButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmVerticalRoundSplitButton(
             onLeftClick = {},
             onRightClick = {},
@@ -374,7 +374,7 @@ fun HmVerticalRoundSplitButtonPreview() {
 @Preview
 @Composable
 fun HmHorizontalRoundSplitButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmHorizontalRoundSplitButton(
             onLeftClick = {},
             onRightClick = {},
@@ -386,7 +386,7 @@ fun HmHorizontalRoundSplitButtonPreview() {
 @Preview
 @Composable
 fun HmBlackButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmBlackButton(
             text = "계좌목록"
         ) {
@@ -398,7 +398,7 @@ fun HmBlackButtonPreview() {
 @Preview
 @Composable
 fun HmSearchButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmSearchButton {
 
         }

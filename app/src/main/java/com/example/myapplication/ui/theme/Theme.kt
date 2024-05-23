@@ -73,7 +73,7 @@ val ColorScheme.surfaceDim
     get() = if (LocalDarkTheme.current) Black else White2
 
 @Composable
-fun Hmm_mancharoTheme(
+fun HmmTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

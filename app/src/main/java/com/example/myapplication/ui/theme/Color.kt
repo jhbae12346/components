@@ -28,6 +28,7 @@ val DuskGray = Color(0xFF868686)
 val LabelGray = Color(0xFF72757D)
 val DarkGray = Color(0xFF5E5E5E)
 val BlackGray = Color(0xFF414550)
+val BlackGray50 = Color(0x80414550)
 val Black = Color(0xFF000000)
 val Graphite = Color(0xFF292929)
 

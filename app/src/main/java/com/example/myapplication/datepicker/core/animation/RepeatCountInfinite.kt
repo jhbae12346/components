@@ -25,6 +25,7 @@ import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.util.fastMaxBy
 import androidx.compose.ui.util.fastSumBy
 import androidx.compose.ui.util.fastZip
+import androidx.compose.ui.util.lerp
 
 internal const val RepeatCountInfinite = -1
 

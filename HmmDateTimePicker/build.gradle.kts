@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -8,10 +9,13 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        aarMetadata {
+            minCompileSdk = 24
+        }
     }
 
     buildTypes {
@@ -36,11 +40,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
@@ -53,7 +52,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation(project(":HmmDateTimePicker"))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -63,4 +61,18 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation ("dev.chrisbanes.snapper:snapper:0.3.0")
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.cargo-man"
+            artifactId = "HmmDateTimePicker"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }

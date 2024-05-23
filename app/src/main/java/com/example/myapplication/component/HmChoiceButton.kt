@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.BlackGray
-import com.example.myapplication.ui.theme.Hmm_mancharoTheme
+import com.example.myapplication.ui.theme.HmmTheme
 import com.example.myapplication.ui.theme.KTCTheme
 import com.example.myapplication.ui.theme.Sky
 import com.example.myapplication.ui.theme.White
@@ -28,18 +28,29 @@ enum class ChoiceButtonType {
 
 data class ChoiceItem(
     val title: String, val isSelected: Boolean = false
-)
+) {
+    companion object {
+        fun List<String>.toChoiceItems() = mapIndexed { index, s ->
+            ChoiceItem(
+                title = s,
+                isSelected = index == 0
+            )
+        }
+    }
+}
 
 @Composable
 fun HmChoiceList(
     modifier: Modifier = Modifier,
     choices: List<ChoiceItem>,
+    columns: Int,
     type: ChoiceButtonType = ChoiceButtonType.BorderBlue,
+    onClick: (Int) -> Unit = {},
 ) {
     LazyVerticalGrid(
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalArrangement = Arrangement.spacedBy(11.dp),
-        columns = GridCells.Fixed(3),
+        columns = GridCells.Fixed(columns),
         modifier = modifier
     ) {
         items(choices.size) { index ->
@@ -47,7 +58,9 @@ fun HmChoiceList(
                 text = choices[index].title,
                 type = type,
                 isSelected = choices[index].isSelected,
-                onClick = {}
+                onClick = {
+                    onClick(index)
+                }
             )
         }
     }
@@ -118,44 +131,27 @@ fun HmFullChoiceButton(
     isSelected: Boolean = false,
     onClick: () -> Unit
 ) {
-    if (isSelected) {
-        Surface(
-            shape = RoundedCornerShape(5.dp),
-            border = BorderStroke(2.dp, Sky),
-            onClick = onClick,
-            color = Sky.copy(alpha = 0.1f),
-            modifier = modifier.fillMaxWidth()
-        ) {
-            Text(
-                text = text,
-                color = Sky,
-                textAlign = TextAlign.Center,
-                style = KTCTheme.typography.titleNormalB,
-                modifier = Modifier.padding(vertical = 10.dp)
-            )
-        }
-    } else {
-        Surface(
-            shape = RoundedCornerShape(5.dp),
-            onClick = onClick,
-            color = WhiteGray,
-            modifier = modifier.fillMaxWidth()
-        ) {
-            Text(
-                text = text,
-                color = BlackGray,
-                textAlign = TextAlign.Center,
-                style = KTCTheme.typography.titleNormalB,
-                modifier = Modifier.padding(vertical = 10.dp)
-            )
-        }
+    Surface(
+        shape = RoundedCornerShape(5.dp),
+        border = if (isSelected) BorderStroke(2.dp, Sky) else null,
+        onClick = onClick,
+        color = if (isSelected) Sky.copy(alpha = 0.1f) else WhiteGray,
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = text,
+            color = if (isSelected) Sky else BlackGray,
+            textAlign = TextAlign.Center,
+            style = KTCTheme.typography.titleNormalB,
+            modifier = Modifier.padding(vertical = 10.dp)
+        )
     }
 }
 
 @Preview
 @Composable
 fun HmChoiceListPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmChoiceList(
             choices = listOf(
                 ChoiceItem("카고", true),
@@ -167,7 +163,8 @@ fun HmChoiceListPreview() {
                 ChoiceItem("라보"),
                 ChoiceItem("밴"),
                 ChoiceItem("냉탑"),
-            )
+            ),
+            columns = 3
         )
     }
 }
@@ -175,7 +172,7 @@ fun HmChoiceListPreview() {
 @Preview
 @Composable
 fun HmFullChoiceButtonPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp),
             modifier = Modifier.fillMaxWidth()

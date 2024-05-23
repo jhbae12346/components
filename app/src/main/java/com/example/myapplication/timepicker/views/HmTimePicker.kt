@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.component.ThemePreviews
 import com.example.myapplication.timepicker.HmAmPmButton
-import com.example.myapplication.ui.theme.Hmm_mancharoTheme
+import com.example.myapplication.ui.theme.HmmTheme
 import kotlinx.collections.immutable.toImmutableList
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit
@@ -237,7 +237,7 @@ private fun amPmValueFromTime(time: LocalTime): AmPmValue {
 @ThemePreviews
 @Composable
 fun WheelTimePickerPreview() {
-    Hmm_mancharoTheme {
+    HmmTheme {
         HmTimePicker()
     }
 }
