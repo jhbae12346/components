@@ -67,7 +67,5 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
 
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
-    implementation ("dev.chrisbanes.snapper:snapper:0.3.0")
-
-    implementation(project(":HmmDateTimePicker"))
+    implementation("dev.chrisbanes.snapper:snapper:0.3.0")
 }
